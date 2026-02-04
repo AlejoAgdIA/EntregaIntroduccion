@@ -4,41 +4,57 @@
     <link rel="icon" href="logo.png" type="image/png">
     <meta charset="UTF-8">
     <title>Login | CursosOnline</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primario: '#4a90e2',
+                        secundario: '#2ecc71',
+                        texto: '#333',
+                        fondo: '#f8f9fa',
+                        blanco: '#ffffff'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] leading-[1.6] text-texto bg-fondo m-0 p-0 box-border">
 
-<nav class="navegacion">
-    <div class="contenedor nav-contenedor">
-        <div class="logo">CursosOnline</div>
-        <ul class="nav-menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="caracteristicas.html">Características</a></li>
+<nav class="bg-blanco py-4 border-b-[3px] border-primario">
+    <div class="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="text-[1.8rem] font-bold text-primario">CursosOnline</div>
+        <ul class="flex flex-col md:flex-row list-none gap-8 items-center mt-4 md:mt-0">
+            <li><a href="index.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Inicio</a></li>
+            <li><a href="cursos.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Cursos</a></li>
+            <li><a href="caracteristicas.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Características</a></li>
         </ul>
     </div>
 </nav>
 
-<section class="seccion">
-    <div class="contenedor">
-        <h2 class="titulo-seccion">Login</h2>
+<section class="py-8 px-0">
+    <div class="max-w-[1200px] mx-auto px-4">
+        <h2 class="text-center text-[2.5rem] mb-8 text-primario font-bold">Login</h2>
 
-        <form class="formulario-contacto" action="#" method="post">
-            <div class="form-grupo">
-                <label>Correo electrónico</label>
-                <input type="email" name="correo" placeholder="Correo" required>
+        <form class="max-w-[600px] mx-auto bg-blanco p-8 border-2 border-primario" action="#" method="post">
+            <div class="mb-6">
+                <label class="block mb-1">Correo electrónico</label>
+                <input type="email" name="correo" placeholder="Correo" class="w-full p-[10px] border border-gray-300 focus:outline-none focus:border-primario" required>
             </div>
 
-            <div class="form-grupo">
-                <label>Contraseña</label>
-                <input type="password" name="password" placeholder="Contraseña" required>
+            <div class="mb-6">
+                <label class="block mb-1">Contraseña</label>
+                <input type="password" name="password" placeholder="Contraseña" class="w-full p-[10px] border border-gray-300 focus:outline-none focus:border-primario" required>
             </div>
-            <button type="submit" class="btn btn-secundario">Login</button>          
+            
+            <button type="submit" class="inline-block bg-secundario text-white px-6 py-3 rounded-[5px] font-semibold w-full cursor-pointer hover:opacity-90 transition-opacity">Login</button>          
         </form>
     </div>
 </section>
 
-<footer class="footer">
+<footer class="bg-texto text-blanco text-center py-8">
     <p>CursosOnline © 2026</p>
 </footer>
 

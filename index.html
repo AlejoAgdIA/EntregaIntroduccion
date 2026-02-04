@@ -3,73 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="img/logo.png" type="image/jpeg">
     <title>Inicio | CursosOnline</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primario: '#4a90e2',
+                        secundario: '#2ecc71',
+                        acento: '#f39c12',
+                        texto: '#333',
+                        'texto-claro': '#666',
+                        fondo: '#f8f9fa',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] leading-[1.6] text-texto bg-fondo m-0 p-0 box-border">
 
-<nav class="navegacion">
-    <div class="contenedor nav-contenedor">
-        <div class="logo">CursosOnline</div>
-        <ul class="nav-menu">
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="caracteristicas.html">Características</a></li>
-            <li><a href="login.html">Login</a></li>
+<nav class="bg-white py-4 border-b-[3px] border-primario">
+    <div class="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="text-[1.8rem] font-bold text-primario">CursosOnline</div>
+        <ul class="flex flex-col md:flex-row list-none gap-8 items-center mt-4 md:mt-0">
+            <li><a href="cursos.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Cursos</a></li>
+            <li><a href="caracteristicas.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Características</a></li>
+            <li><a href="login.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Login</a></li>
         </ul>
     </div>
 </nav>
 
-<section class="hero">
-    <div class="contenedor">
-        <h1>Aprende Sin Límites</h1>
-        <p>Cursos virtuales para todos los niveles</p>
-        <a href="cursos.html" class="btn btn-primario">Ver cursos</a>
+<section class="bg-gradient-to-br from-primario to-secundario text-white text-center py-20 px-0">
+    <div class="max-w-[1200px] mx-auto px-4">
+        <h1 class="text-4xl md:text-[2.5rem] font-bold mb-4">Aprende Sin Límites</h1>
+        <p class="mb-8">Cursos virtuales para todos los niveles</p>
+        <a href="cursos.html" class="inline-block bg-primario text-white px-6 py-3 rounded-[5px] font-semibold no-underline">Ver cursos</a>
     </div>
 </section>
 
-<section class="seccion">
-    <div class="contenedor">
-        <h2 class="titulo-seccion">¿Qué encontrarás aquí?</h2>
+<section class="py-8 px-0">
+    <div class="max-w-[1200px] mx-auto px-4">
+        <h2 class="text-center text-[2.5rem] mb-8 text-primario font-bold">¿Qué encontrarás aquí?</h2>
 
-        <div class="cursos-grid">
-            <div class="curso-card">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8">
+            <div class="bg-white border border-[#ddd] rounded-[10px] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
                 <div class="curso-contenido">
-                    <h3>Cursos prácticos</h3>
-                    <p>Aprende con contenido claro y ejercicios reales.</p>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Cursos prácticos</h3>
+                    <p class="text-texto-claro">Aprende con contenido claro y ejercicios reales.</p>
                 </div>
             </div>
 
-            <div class="curso-card">
+            <div class="bg-white border border-[#ddd] rounded-[10px] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
                 <div class="curso-contenido">
-                    <h3>Aprende a tu ritmo</h3>
-                    <p>Accede a las clases cuando quieras y desde donde estés.</p>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Aprende a tu ritmo</h3>
+                    <p class="text-texto-claro">Accede a las clases cuando quieras y desde donde estés.</p>
                 </div>
             </div>
 
-            <div class="curso-card">
+            <div class="bg-white border border-[#ddd] rounded-[10px] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
                 <div class="curso-contenido">
-                    <h3>Certificación</h3>
-                    <p>Obtén certificados que respalden tu aprendizaje.</p>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Certificación</h3>
+                    <p class="text-texto-claro">Obtén certificados que respalden tu aprendizaje.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="seccion">
-    <div class="contenedor">
-        <h2 class="titulo-seccion">Empieza hoy</h2>
-        <p style="text-align:center; margin-bottom:2rem;">
+<section class="py-8 px-0">
+    <div class="max-w-[1200px] mx-auto px-4">
+        <h2 class="text-center text-[2.5rem] mb-8 text-primario font-bold">Empieza hoy</h2>
+        <p class="text-center mb-8 text-texto-claro">
             Mejora tus habilidades y abre nuevas oportunidades profesionales.
         </p>
-        <div style="text-align:center;">
-            <a href="registro.html" class="btn btn-secundario">Registrarse ahora</a>
+        <div class="text-center">
+            <a href="registro.html" class="inline-block bg-secundario text-white px-6 py-3 rounded-[5px] font-semibold no-underline">Registrarse ahora</a>
         </div>
     </div>
 </section>
 
-<footer class="footer">
+<footer class="bg-texto text-white text-center py-8">
     <p>CursosOnline © 2026</p>
 </footer>
 

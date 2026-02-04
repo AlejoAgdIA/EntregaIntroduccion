@@ -4,66 +4,82 @@
     <link rel="icon" href="logo.png" type="image/png">
     <meta charset="UTF-8">
     <title>Características | CursosOnline</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primario: '#4a90e2',
+                        secundario: '#2ecc71',
+                        texto: '#333',
+                        'texto-claro': '#666',
+                        fondo: '#f8f9fa',
+                        blanco: '#ffffff'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] leading-[1.6] text-texto bg-fondo m-0 p-0 box-border">
 
-<nav class="navegacion">
-    <div class="contenedor nav-contenedor">
-        <div class="logo">CursosOnline</div>
-        <ul class="nav-menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="caracteristicas.html">Características</a></li>
-            <li><a href="login.html">Login</a></li>
+<nav class="bg-blanco py-4 border-b-[3px] border-primario">
+    <div class="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="text-[1.8rem] font-bold text-primario">CursosOnline</div>
+        <ul class="flex flex-col md:flex-row list-none gap-8 items-center mt-4 md:mt-0">
+            <li><a href="index.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Inicio</a></li>
+            <li><a href="caracteristicas.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors font-bold">Características</a></li>
+            <li><a href="login.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Login</a></li>
         </ul>
     </div>
 </nav>
 
-<section class="seccion">
-    <div class="contenedor">
-        <h2 class="titulo-seccion">¿Por qué elegir CursosOnline?</h2>
+<section class="py-8 px-0">
+    <div class="max-w-[1200px] mx-auto px-4">
+        <h2 class="text-center text-[2.5rem] mb-8 text-primario font-bold">¿Por qué elegir CursosOnline?</h2>
 
-        <div class="cursos-grid">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8">
 
-            <div class="curso-card">
+            <div class="bg-blanco border border-[#ddd] rounded-[10px] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
                 <div class="curso-contenido">
-                    <h3>Clases 100% Online</h3>
-                    <p>Accede a los cursos desde cualquier lugar y a cualquier hora.</p>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Clases 100% Online</h3>
+                    <p class="text-texto-claro">Accede a los cursos desde cualquier lugar y a cualquier hora.</p>
                 </div>
             </div>
 
-            <div class="curso-card">
+            <div class="bg-blanco border border-[#ddd] rounded-[10px] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
                 <div class="curso-contenido">
-                    <h3>Certificado</h3>
-                    <p>Obtén un certificado al finalizar cada curso.</p>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Certificado</h3>
+                    <p class="text-texto-claro">Obtén un certificado al finalizar cada curso.</p>
                 </div>
             </div>
 
-            <div class="curso-card">
+            <div class="bg-blanco border border-[#ddd] rounded-[10px] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
                 <div class="curso-contenido">
-                    <h3>Contenido Actualizado</h3>
-                    <p>Material moderno basado en las últimas tecnologías.</p>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Contenido Actualizado</h3>
+                    <p class="text-texto-claro">Material moderno basado en las últimas tecnologías.</p>
                 </div>
             </div>
 
-            <div class="curso-card">
+            <div class="bg-blanco border border-[#ddd] rounded-[10px] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
                 <div class="curso-contenido">
-                    <h3>Aprende a tu ritmo</h3>
-                    <p>Avanza según tu tiempo y repite las lecciones cuando quieras.</p>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Aprende a tu ritmo</h3>
+                    <p class="text-texto-claro">Avanza según tu tiempo y repite las lecciones cuando quieras.</p>
                 </div>
             </div>
 
-            <div class="curso-card">
+            <div class="bg-blanco border border-[#ddd] rounded-[10px] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
                 <div class="curso-contenido">
-                    <h3>Soporte</h3>
-                    <p>Resuelve dudas y recibe acompañamiento durante el curso.</p>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Soporte</h3>
+                    <p class="text-texto-claro">Resuelve dudas y recibe acompañamiento durante el curso.</p>
                 </div>
             </div>
 
-            <div class="curso-card">
+            <div class="bg-blanco border border-[#ddd] rounded-[10px] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
                 <div class="curso-contenido">
-                    <h3>Precios accesibles</h3>
-                    <p>Cursos de alta calidad a precios justos.</p>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Precios accesibles</h3>
+                    <p class="text-texto-claro">Cursos de alta calidad a precios justos.</p>
                 </div>
             </div>
 
@@ -71,7 +87,7 @@
     </div>
 </section>
 
-<footer class="footer">
+<footer class="bg-texto text-blanco text-center py-8">
     <p>CursosOnline © 2026</p>
 </footer>
 

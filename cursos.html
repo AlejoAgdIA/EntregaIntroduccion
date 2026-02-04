@@ -4,51 +4,60 @@
     <link rel="icon" href="logo.png" type="image/png">
     <meta charset="UTF-8">
     <title>Cursos | CursosOnline</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primario: '#4a90e2', secundario: '#2ecc71', texto: '#333', fondo: '#f8f9fa' }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="font-sans leading-[1.6] text-texto bg-fondo">
 
-<nav class="navegacion">
-    <div class="contenedor nav-contenedor">
-        <div class="logo">CursosOnline</div>
-        <ul class="nav-menu">
-            <li><a href="index.html">Inicio</a></li>        
-            <li><a href="caracteristicas.html">Características</a></li>
-            <li><a href="login.html">Login</a></li>
+<nav class="bg-white py-4 border-b-[3px] border-primario">
+    <div class="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="text-[1.8rem] font-bold text-primario">CursosOnline</div>
+        <ul class="flex flex-col md:flex-row list-none gap-8 items-center mt-4 md:mt-0">
+            <li><a href="index.html" class="no-underline text-texto px-4 py-2 hover:text-primario">Inicio</a></li>        
+            <li><a href="caracteristicas.html" class="no-underline text-texto px-4 py-2 hover:text-primario">Características</a></li>
+            <li><a href="login.html" class="no-underline text-texto px-4 py-2 hover:text-primario">Login</a></li>
         </ul>
     </div>
 </nav>
 
-<section class="seccion">
-    <div class="contenedor">
-        <h2 class="titulo-seccion">Cursos Destacados</h2>
+<section class="py-8 px-0">
+    <div class="max-w-[1200px] mx-auto px-4">
+        <h2 class="text-center text-[2.5rem] mb-8 text-primario font-bold">Cursos Destacados</h2>
 
-        <div class="cursos-grid">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8">
 
-            <div class="curso-card">
-                <div class="curso-imagen web"></div>
-                <div class="curso-contenido">
-                    <h3>Desarrollo Web</h3>
-                    <p>HTML y CSS desde cero</p>
-                    <span class="precio">$159.990 COP</span>
+<div class="bg-white border border-[#ddd] rounded-[10px] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
+                <div class="h-[180px] bg-[#ccc] bg-cover bg-center rounded-t-[8px]" style="background-image: url('img/desarrolloweb.jpg');"></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Desarrollo Web</h3>
+                    <p class="text-gray-600">HTML y CSS desde cero</p>
+                    <span class="text-secundario font-bold block mt-2">$159.990 COP</span>
                 </div>
             </div>
 
-            <div class="curso-card">
-                <div class="curso-imagen js"></div>
-                <div class="curso-contenido">
-                    <h3>JavaScript Moderno</h3>
-                    <p>Aprende JS desde lo básico hasta avanzado</p>
-                    <span class="precio">$179.990 COP</span>
+            <div class="bg-white border border-[#ddd] rounded-[10px] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
+                <div class="h-[180px] bg-[#ccc] bg-cover bg-center rounded-t-[8px]" style="background-image: url('img/jsmoderno.jpg');"></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">JavaScript Moderno</h3>
+                    <p class="text-gray-600">Aprende JS desde lo básico hasta avanzado</p>
+                    <span class="text-secundario font-bold block mt-2">$179.990 COP</span>
                 </div>
             </div>
 
-            <div class="curso-card">
-                <div class="curso-imagen css"></div>
-                <div class="curso-contenido">
-                    <h3>Diseño con CSS Avanzado</h3>
-                    <p>Flexbox, Grid y animaciones</p>
-                    <span class="precio">$149.990 COP</span>
+            <div class="bg-white border border-[#ddd] rounded-[10px] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_25px_rgba(0,0,0,0.15)] group">
+                <div class="h-[180px] bg-[#ccc] bg-cover bg-center rounded-t-[8px]" style="background-image: url('img/css\ avanzado.jpg');"></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-primario">Diseño con CSS Avanzado</h3>
+                    <p class="text-gray-600">Flexbox, Grid y animaciones</p>
+                    <span class="text-secundario font-bold block mt-2">$149.990 COP</span>
                 </div>
             </div>
 
@@ -56,7 +65,7 @@
     </div>
 </section>
 
-<footer class="footer">
+<footer class="bg-texto text-white text-center py-8">
     <p>CursosOnline © 2026</p>
 </footer>
 
