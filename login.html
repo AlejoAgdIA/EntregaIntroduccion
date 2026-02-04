@@ -1,62 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="icon" href="logo.png" type="image/png">
     <meta charset="UTF-8">
-    <title>Login | CursosOnline</title>
+    <title>Iniciar Sesión | Cursos Virtuales</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primario: '#4a90e2',
-                        secundario: '#2ecc71',
-                        texto: '#333',
-                        fondo: '#f8f9fa',
-                        blanco: '#ffffff'
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] leading-[1.6] text-texto bg-fondo m-0 p-0 box-border">
+<body class="bg-slate-900 text-white font-sans flex items-center justify-center min-h-screen">
 
-<nav class="bg-blanco py-4 border-b-[3px] border-primario">
-    <div class="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-        <div class="text-[1.8rem] font-bold text-primario">CursosOnline</div>
-        <ul class="flex flex-col md:flex-row list-none gap-8 items-center mt-4 md:mt-0">
-            <li><a href="index.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Inicio</a></li>
-            <li><a href="cursos.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Cursos</a></li>
-            <li><a href="caracteristicas.html" class="no-underline text-texto px-4 py-2 hover:text-primario transition-colors">Características</a></li>
-        </ul>
-    </div>
-</nav>
+    <div class="bg-slate-800 p-10 rounded-3xl shadow-2xl w-full max-w-lg">
+        <h2 class="text-3xl font-bold mb-6 text-center">Bienvenido de nuevo</h2>
+        <p class="text-slate-400 text-center mb-8">Continúa con tu aprendizaje 📚</p>
 
-<section class="py-8 px-0">
-    <div class="max-w-[1200px] mx-auto px-4">
-        <h2 class="text-center text-[2.5rem] mb-8 text-primario font-bold">Login</h2>
-
-        <form class="max-w-[600px] mx-auto bg-blanco p-8 border-2 border-primario" action="#" method="post">
-            <div class="mb-6">
-                <label class="block mb-1">Correo electrónico</label>
-                <input type="email" name="correo" placeholder="Correo" class="w-full p-[10px] border border-gray-300 focus:outline-none focus:border-primario" required>
-            </div>
-
-            <div class="mb-6">
-                <label class="block mb-1">Contraseña</label>
-                <input type="password" name="password" placeholder="Contraseña" class="w-full p-[10px] border border-gray-300 focus:outline-none focus:border-primario" required>
+        <form class="space-y-5">
+            <div>
+                <label class="block text-sm font-medium text-slate-300 mb-2">Correo electrónico</label>
+                <input type="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl bg-slate-700 border border-slate-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
             </div>
             
-            <button type="submit" class="inline-block bg-secundario text-white px-6 py-3 rounded-[5px] font-semibold w-full cursor-pointer hover:opacity-90 transition-opacity">Login</button>          
+            <div>
+                <label class="block text-sm font-medium text-slate-300 mb-2">Contraseña</label>
+                <input type="password" placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-slate-700 border border-slate-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                <div class="text-right mt-2">
+                    <a href="#" class="text-sm text-blue-400 hover:underline">¿Olvidaste tu contraseña?</a>
+                </div>
+            </div>
+            
+            <button class="w-full bg-blue-600 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-900/20">
+                Entrar
+            </button>
         </form>
-    </div>
-</section>
 
-<footer class="bg-texto text-blanco text-center py-8">
-    <p>CursosOnline © 2026</p>
-</footer>
+        <div class="text-center mt-8 pt-6 border-t border-slate-700">
+            <p class="text-slate-400">
+                ¿No tienes cuenta? 
+                <a href="registro.html" class="text-blue-400 font-semibold hover:underline">Regístrate gratis</a>
+            </p>
+            <div class="mt-4">
+                <a href="index.html" class="text-sm text-slate-500 hover:text-white transition-colors">← Volver al inicio</a>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
