@@ -161,6 +161,33 @@ public class Main {
                 }
             }
 
+            // VER PERFIL
+            else if (opcion == 7) {
+                if (!sesionIniciada) {
+                    System.out.println("Debe iniciar sesión para ver el perfil.");
+                } else {
+                    System.out.println("\n--- PERFIL DEL USUARIO ---");
+                    System.out.println("Nombre: " + nombreGuardado);
+                    System.out.println("Correo: " + correoGuardado);
+                    if (!cursoSeleccionado.equals("")) {
+                        System.out.println("Curso seleccionado: " + cursoSeleccionado);
+                    } else {
+                        System.out.println("Curso seleccionado: Ninguno");
+                    }
+                }
+            }
+
+            // CERRAR SESIÓN
+            else if (opcion == 8) {
+                if (sesionIniciada) {
+                    sesionIniciada = false;
+                    System.out.println("Sesión cerrada correctamente.");
+                } else {
+                    System.out.println("No hay ninguna sesión iniciada.");
+                }
+            }
+
+            // SALIR CON CONFIRMACIÓN
             else if (opcion == 0) {
                 System.out.println("Gracias por usar la plataforma.");
             }
