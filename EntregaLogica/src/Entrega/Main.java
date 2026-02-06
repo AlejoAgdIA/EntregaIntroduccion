@@ -31,6 +31,7 @@ public class Main {
 
         int opcion = -1;
         int elegir;
+        int borrar;
         String correo;
         String pass;
         String r;
@@ -44,13 +45,14 @@ public class Main {
                 System.out.println("2. Iniciar sesión");
                 System.out.println("0. Salir");
             } else if (esAdmin) {
-                System.out.println("7. Ver todos los usuarios");
-                System.out.println("8. Modificar precios de cursos");
+                System.out.println("7. Ver usuarios");
+                System.out.println("8. Modificar precios");
+                System.out.println("10. Borrar usuario");
                 System.out.println("9. Cerrar sesión");
                 System.out.println("0. Salir");
             } else {
                 System.out.println("3. Ver cursos y elegir");
-                System.out.println("4. Comprar curso seleccionado");
+                System.out.println("4. Comprar curso");
                 System.out.println("5. Ver perfil");
                 System.out.println("9. Cerrar sesión");
                 System.out.println("0. Salir");
@@ -83,18 +85,18 @@ public class Main {
                     esAdmin = true;
                     System.out.println("Bienvenido ADMINISTRADOR");
                 } else {
+                    boolean encontrado = false;
                     for (int i = 0; i < contadorUsuarios; i++) {
                         if (correo.equals(correos[i]) && pass.equals(contrasenas[i])) {
                             sesionIniciada = true;
                             esAdmin = false;
                             usuarioActual = i;
+                            encontrado = true;
                             System.out.println("Bienvenido " + nombres[i]);
                             break;
                         }
                     }
-                    if (!sesionIniciada) {
-                        System.out.println("Datos incorrectos.");
-                    }
+                    if (!encontrado) System.out.println("Datos incorrectos.");
                 }
             }
 
@@ -138,6 +140,28 @@ public class Main {
                 }
             }
 
+            else if (opcion == 10 && esAdmin) {
+                for (int i = 0; i < contadorUsuarios; i++) {
+                    System.out.println((i + 1) + ". " + nombres[i]);
+                }
+                System.out.print("Seleccione el número del usuario a borrar: ");
+                borrar = sc.nextInt();
+                sc.nextLine();
+
+                if (borrar >= 1 && borrar <= contadorUsuarios) {
+                    for (int i = borrar - 1; i < contadorUsuarios - 1; i++) {
+                        nombres[i] = nombres[i + 1];
+                        correos[i] = correos[i + 1];
+                        contrasenas[i] = contrasenas[i + 1];
+                        cursos[i] = cursos[i + 1];
+                    }
+                    contadorUsuarios--;
+                    System.out.println("Usuario eliminado.");
+                } else {
+                    System.out.println("Opción inválida.");
+                }
+            }
+
             else if (opcion == 8 && esAdmin) {
                 System.out.print("Nuevo precio Desarrollo Web: ");
                 precio1 = sc.nextDouble();
@@ -166,4 +190,3 @@ public class Main {
         } while (opcion != 0);
     }
 }
-
