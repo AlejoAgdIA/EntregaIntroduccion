@@ -7,12 +7,17 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        // Datos del usuario
+        // Usuario
         String nombreGuardado = "";
         String correoGuardado = "";
         String passGuardado = "";
 
         boolean sesionIniciada = false;
+        boolean esAdmin = false;
+
+        // Admin
+        String correoAdmin = "admin@cursos.com";
+        String passAdmin = "admin123";
 
         // Cursos
         String titulo1 = "Desarrollo Web";
@@ -31,19 +36,33 @@ public class Main {
 
         do {
             System.out.println("\n===== PLATAFORMA DE CURSOS =====");
-            System.out.println("1. Registrarse");
-            System.out.println("2. Iniciar sesión");
-            System.out.println("3. Ver cursos y elegir");
-            System.out.println("4. Ver características y comprar");
-            System.out.println("5. Actualizar datos del usuario");
-            System.out.println("6. Buscar usuario");
-            System.out.println("0. Salir");
+
+            if (!sesionIniciada) {
+                System.out.println("1. Registrarse");
+                System.out.println("2. Iniciar sesión");
+                System.out.println("0. Salir");
+            }
+            else if (esAdmin) {
+                System.out.println("7. Ver datos del usuario");
+                System.out.println("8. Modificar precios de cursos");
+                System.out.println("9. Cerrar sesión");
+                System.out.println("0. Salir");
+            }
+            else {
+                System.out.println("3. Ver cursos y elegir");
+                System.out.println("4. Ver características y comprar");
+                System.out.println("5. Actualizar datos del usuario");
+                System.out.println("6. Ver perfil");
+                System.out.println("9. Cerrar sesión");
+                System.out.println("0. Salir");
+            }
+
             System.out.print("Elige una opción: ");
             opcion = sc.nextInt();
             sc.nextLine();
 
-            // REGISTRO
-            if (opcion == 1) {
+            // REGISTRO USUARIO
+            if (opcion == 1 && !sesionIniciada) {
                 System.out.print("Nombre: ");
                 nombreGuardado = sc.nextLine();
 
@@ -57,29 +76,35 @@ public class Main {
             }
 
             // LOGIN
-            else if (opcion == 2) {
+            else if (opcion == 2 && !sesionIniciada) {
                 System.out.print("Correo: ");
                 String correo = sc.nextLine();
 
                 System.out.print("Contraseña: ");
                 String pass = sc.nextLine();
 
-                if (correo.equals(correoGuardado) && pass.equals(passGuardado)) {
-                    System.out.println("Bienvenido " + nombreGuardado);
+                if (correo.equals(correoAdmin) && pass.equals(passAdmin)) {
                     sesionIniciada = true;
-                } else {
+                    esAdmin = true;
+                    System.out.println("Bienvenido ADMINISTRADOR");
+                }
+                else if (correo.equals(correoGuardado) && pass.equals(passGuardado)) {
+                    sesionIniciada = true;
+                    esAdmin = false;
+                    System.out.println("Bienvenido " + nombreGuardado);
+                }
+                else {
                     System.out.println("Datos incorrectos.");
                 }
             }
 
-            // VER CURSOS
-            else if (opcion == 3) {
-                System.out.println("\nCursos disponibles:");
+            // VER CURSOS (USUARIO)
+            else if (opcion == 3 && sesionIniciada && !esAdmin) {
                 System.out.println("1. " + titulo1 + " - $" + precio1);
                 System.out.println("2. " + titulo2 + " - $" + precio2);
                 System.out.println("3. " + titulo3 + " - $" + precio3);
 
-                System.out.print("Seleccione un curso (1-3): ");
+                System.out.print("Seleccione un curso: ");
                 int elegir = sc.nextInt();
                 sc.nextLine();
 
@@ -92,108 +117,80 @@ public class Main {
                 } else if (elegir == 3) {
                     cursoSeleccionado = titulo3;
                     precioSeleccionado = precio3;
-                } else {
-                    System.out.println("Selección inválida.");
                 }
 
-                if (!cursoSeleccionado.equals("")) {
-                    System.out.println("Curso seleccionado: " + cursoSeleccionado);
-                }
+                System.out.println("Curso seleccionado: " + cursoSeleccionado);
             }
 
             // COMPRAR
-            else if (opcion == 4) {
-                System.out.println("\nCaracterísticas del curso:");
-                System.out.println("- Clases 100% online");
-                System.out.println("- Certificado al finalizar");
-                System.out.println("- Acceso ilimitado");
-                System.out.println("- Soporte académico");
-
-                if (!sesionIniciada) {
-                    System.out.println("Debe iniciar sesión para comprar.");
-                }
-                else if (!cursoSeleccionado.equals("")) {
-                    System.out.println("Curso elegido: " + cursoSeleccionado);
-                    System.out.println("Precio: $" + precioSeleccionado);
-
+            else if (opcion == 4 && sesionIniciada && !esAdmin) {
+                if (!cursoSeleccionado.equals("")) {
                     System.out.print("¿Desea comprar el curso? (s/n): ");
-                    String respuesta = sc.nextLine();
+                    String r = sc.nextLine();
 
-                    if (respuesta.equals("s")) {
+                    if (r.equals("s")) {
                         System.out.println("Compra realizada con éxito.");
-                    } else {
-                        System.out.println("Compra cancelada.");
                     }
                 } else {
-                    System.out.println("Primero debe elegir un curso.");
+                    System.out.println("Debe seleccionar un curso.");
                 }
             }
 
             // ACTUALIZAR DATOS
-            else if (opcion == 5) {
-                if (!sesionIniciada) {
-                    System.out.println("Debe iniciar sesión para actualizar datos.");
-                } else {
-                    System.out.print("Nuevo nombre: ");
-                    nombreGuardado = sc.nextLine();
+            else if (opcion == 5 && sesionIniciada && !esAdmin) {
+                System.out.print("Nuevo nombre: ");
+                nombreGuardado = sc.nextLine();
 
-                    System.out.print("Nuevo correo: ");
-                    correoGuardado = sc.nextLine();
+                System.out.print("Nuevo correo: ");
+                correoGuardado = sc.nextLine();
 
-                    System.out.print("Nueva contraseña: ");
-                    passGuardado = sc.nextLine();
+                System.out.print("Nueva contraseña: ");
+                passGuardado = sc.nextLine();
 
-                    System.out.println("Datos actualizados correctamente.");
-                }
-            }
-
-            // BUSCAR USUARIO
-            else if (opcion == 6) {
-                System.out.print("Ingrese el correo a buscar: ");
-                String correoBuscar = sc.nextLine();
-
-                if (correoBuscar.equals(correoGuardado)) {
-                    System.out.println("Usuario encontrado:");
-                    System.out.println("Nombre: " + nombreGuardado);
-                    System.out.println("Correo: " + correoGuardado);
-                } else {
-                    System.out.println("Usuario no encontrado.");
-                }
+                System.out.println("Datos actualizados.");
             }
 
             // VER PERFIL
-            else if (opcion == 7) {
-                if (!sesionIniciada) {
-                    System.out.println("Debe iniciar sesión para ver el perfil.");
-                } else {
-                    System.out.println("\n--- PERFIL DEL USUARIO ---");
-                    System.out.println("Nombre: " + nombreGuardado);
-                    System.out.println("Correo: " + correoGuardado);
-                    if (!cursoSeleccionado.equals("")) {
-                        System.out.println("Curso seleccionado: " + cursoSeleccionado);
-                    } else {
-                        System.out.println("Curso seleccionado: Ninguno");
-                    }
-                }
+            else if (opcion == 6 && sesionIniciada && !esAdmin) {
+                System.out.println("Nombre: " + nombreGuardado);
+                System.out.println("Correo: " + correoGuardado);
+                System.out.println("Curso: " + cursoSeleccionado);
+            }
+
+            // ADMIN: VER USUARIO
+            else if (opcion == 7 && esAdmin) {
+                System.out.println("Usuario registrado:");
+                System.out.println("Nombre: " + nombreGuardado);
+                System.out.println("Correo: " + correoGuardado);
+                System.out.println("Curso: " + cursoSeleccionado);
+            }
+
+            // ADMIN: MODIFICAR PRECIOS
+            else if (opcion == 8 && esAdmin) {
+                System.out.print("Nuevo precio Desarrollo Web: ");
+                precio1 = sc.nextDouble();
+                System.out.print("Nuevo precio JavaScript: ");
+                precio2 = sc.nextDouble();
+                System.out.print("Nuevo precio CSS: ");
+                precio3 = sc.nextDouble();
+                sc.nextLine();
+
+                System.out.println("Precios actualizados.");
             }
 
             // CERRAR SESIÓN
-            else if (opcion == 8) {
-                if (sesionIniciada) {
-                    sesionIniciada = false;
-                    System.out.println("Sesión cerrada correctamente.");
-                } else {
-                    System.out.println("No hay ninguna sesión iniciada.");
-                }
+            else if (opcion == 9 && sesionIniciada) {
+                sesionIniciada = false;
+                esAdmin = false;
+                System.out.println("Sesión cerrada.");
             }
 
-            // SALIR CON CONFIRMACIÓN
+            // SALIR
             else if (opcion == 0) {
-                System.out.println("Gracias por usar la plataforma.");
-            }
-
-            else {
-                System.out.println("Opción no válida.");
+                System.out.print("¿Desea salir? (s/n): ");
+                String salir = sc.nextLine();
+                if (!salir.equals("s")) opcion = -1;
+                else System.out.println("Gracias por usar la plataforma.");
             }
 
         } while (opcion != 0);
