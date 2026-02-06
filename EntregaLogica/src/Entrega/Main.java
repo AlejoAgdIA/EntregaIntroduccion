@@ -49,7 +49,7 @@ public class Main {
                 System.out.println("0. Salir");
             } else {
                 System.out.println("3. Ver cursos y elegir");
-                System.out.println("4. Ver características y comprar");
+                System.out.println("4. Comprar curso seleccionado");
                 System.out.println("5. Actualizar datos del usuario");
                 System.out.println("6. Ver perfil");
                 System.out.println("9. Cerrar sesión");
