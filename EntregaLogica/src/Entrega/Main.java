@@ -14,6 +14,14 @@ public class Main {
 
         int contadorUsuarios = 0;
         int usuarioActual = -1;
+        int opcion = -1;
+        int elegir;
+        int borrar;
+
+        String correo;
+        String pass;
+        String r;
+        String salir;
 
         String correoAdmin = "admin@cursos.com";
         String passAdmin = "admin123";
@@ -29,14 +37,6 @@ public class Main {
         double precio2 = 179990;
         double precio3 = 149990;
 
-        int opcion = -1;
-        int elegir;
-        int borrar;
-        String correo;
-        String pass;
-        String r;
-        String salir;
-
         do {
             System.out.println("\n===== PLATAFORMA DE CURSOS =====");
 
@@ -45,16 +45,16 @@ public class Main {
                 System.out.println("2. Iniciar sesión");
                 System.out.println("0. Salir");
             } else if (esAdmin) {
-                System.out.println("7. Ver usuarios");
-                System.out.println("8. Modificar precios");
-                System.out.println("10. Borrar usuario");
-                System.out.println("9. Cerrar sesión");
+                System.out.println("1. Ver usuarios");
+                System.out.println("2. Modificar precios");
+                System.out.println("3. Borrar usuario");
+                System.out.println("4. Cerrar sesión");
                 System.out.println("0. Salir");
             } else {
-                System.out.println("3. Ver cursos y elegir");
-                System.out.println("4. Comprar curso");
-                System.out.println("5. Ver perfil");
-                System.out.println("9. Cerrar sesión");
+                System.out.println("1. Ver cursos y elegir");
+                System.out.println("2. Comprar curso");
+                System.out.println("3. Ver perfil");
+                System.out.println("4. Cerrar sesión");
                 System.out.println("0. Salir");
             }
 
@@ -89,18 +89,19 @@ public class Main {
                     for (int i = 0; i < contadorUsuarios; i++) {
                         if (correo.equals(correos[i]) && pass.equals(contrasenas[i])) {
                             sesionIniciada = true;
-                            esAdmin = false;
                             usuarioActual = i;
                             encontrado = true;
                             System.out.println("Bienvenido " + nombres[i]);
                             break;
                         }
                     }
-                    if (!encontrado) System.out.println("Datos incorrectos.");
+                    if (!encontrado) {
+                        System.out.println("Datos incorrectos.");
+                    }
                 }
             }
 
-            else if (opcion == 3 && sesionIniciada && !esAdmin) {
+            else if (opcion == 1 && sesionIniciada && !esAdmin) {
                 System.out.println("1. " + titulo1 + " - $" + precio1);
                 System.out.println("2. " + titulo2 + " - $" + precio2);
                 System.out.println("3. " + titulo3 + " - $" + precio3);
@@ -116,7 +117,7 @@ public class Main {
                 System.out.println("Curso seleccionado: " + cursos[usuarioActual]);
             }
 
-            else if (opcion == 4 && sesionIniciada && !esAdmin) {
+            else if (opcion == 2 && sesionIniciada && !esAdmin) {
                 if (!cursos[usuarioActual].equals("Ninguno")) {
                     System.out.print("¿Desea comprar el curso? (s/n): ");
                     r = sc.nextLine();
@@ -128,23 +129,34 @@ public class Main {
                 }
             }
 
-            else if (opcion == 5 && sesionIniciada && !esAdmin) {
+            else if (opcion == 3 && sesionIniciada && !esAdmin) {
                 System.out.println("Nombre: " + nombres[usuarioActual]);
                 System.out.println("Correo: " + correos[usuarioActual]);
                 System.out.println("Curso: " + cursos[usuarioActual]);
             }
 
-            else if (opcion == 7 && esAdmin) {
+            else if (opcion == 1 && esAdmin) {
                 for (int i = 0; i < contadorUsuarios; i++) {
                     System.out.println((i + 1) + ". " + nombres[i] + " | " + correos[i] + " | " + cursos[i]);
                 }
             }
 
-            else if (opcion == 10 && esAdmin) {
+            else if (opcion == 2 && esAdmin) {
+                System.out.print("Nuevo precio Desarrollo Web: ");
+                precio1 = sc.nextDouble();
+                System.out.print("Nuevo precio JavaScript: ");
+                precio2 = sc.nextDouble();
+                System.out.print("Nuevo precio CSS: ");
+                precio3 = sc.nextDouble();
+                sc.nextLine();
+                System.out.println("Precios actualizados.");
+            }
+
+            else if (opcion == 3 && esAdmin) {
                 for (int i = 0; i < contadorUsuarios; i++) {
                     System.out.println((i + 1) + ". " + nombres[i]);
                 }
-                System.out.print("Seleccione el número del usuario a borrar: ");
+                System.out.print("Seleccione el usuario a borrar: ");
                 borrar = sc.nextInt();
                 sc.nextLine();
 
@@ -157,23 +169,10 @@ public class Main {
                     }
                     contadorUsuarios--;
                     System.out.println("Usuario eliminado.");
-                } else {
-                    System.out.println("Opción inválida.");
                 }
             }
 
-            else if (opcion == 8 && esAdmin) {
-                System.out.print("Nuevo precio Desarrollo Web: ");
-                precio1 = sc.nextDouble();
-                System.out.print("Nuevo precio JavaScript: ");
-                precio2 = sc.nextDouble();
-                System.out.print("Nuevo precio CSS: ");
-                precio3 = sc.nextDouble();
-                sc.nextLine();
-                System.out.println("Precios actualizados.");
-            }
-
-            else if (opcion == 9 && sesionIniciada) {
+            else if (opcion == 4 && sesionIniciada) {
                 sesionIniciada = false;
                 esAdmin = false;
                 usuarioActual = -1;
@@ -183,10 +182,16 @@ public class Main {
             else if (opcion == 0) {
                 System.out.print("¿Desea salir? (s/n): ");
                 salir = sc.nextLine();
-                if (!salir.equalsIgnoreCase("s")) opcion = -1;
-                else System.out.println("Gracias por usar la plataforma.");
+                if (!salir.equalsIgnoreCase("s")) {
+                    opcion = -1;
+                } else {
+                    System.out.println("Gracias por usar la plataforma.");
+                }
             }
 
         } while (opcion != 0);
+
+        sc.close();
     }
 }
+
