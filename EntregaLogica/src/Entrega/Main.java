@@ -53,14 +53,14 @@ public class Main {
                 System.out.println(" 3) Eliminar usuario");
                 System.out.println(" 4) Agregar curso");
                 System.out.println(" 5) Eliminar curso");
-                System.out.println(" 6) Actualizar usuario");
-                System.out.println(" 7) Cerrar sesión");
+                System.out.println(" 6) Cerrar sesión");
                 System.out.println(" 0) Salir");
             } else {
                 System.out.println(" 1) Ver cursos");
                 System.out.println(" 2) Comprar curso");
                 System.out.println(" 3) Ver perfil");
-                System.out.println(" 4) Cerrar sesión");
+                System.out.println(" 4) Actualizar mis datos");
+                System.out.println(" 5) Cerrar sesión");
                 System.out.println(" 0) Salir");
             }
 
@@ -86,10 +86,12 @@ public class Main {
                         totalUsuarios++;
                         System.out.println("Registro exitoso.");
                     } else if (admin) {
+                        System.out.println("\n--- USUARIOS ---");
                         for (int i = 0; i < totalUsuarios; i++) {
                             System.out.println((i + 1) + ") " + nombres[i] + " | " + correos[i]);
                         }
                     } else {
+                        System.out.println("\n--- CURSOS DISPONIBLES ---");
                         for (int i = 0; i < totalCursos; i++) {
                             System.out.println((i + 1) + ") " + cursos[i] + " - $" + precios[i]);
                         }
@@ -130,8 +132,9 @@ public class Main {
                             }
                         }
                     } else if (admin) {
+                        System.out.println("\n--- CAMBIAR PRECIOS ---");
                         for (int i = 0; i < totalCursos; i++) {
-                            System.out.println((i + 1) + ") " + cursos[i] + " $" + precios[i]);
+                            System.out.println((i + 1) + ") " + cursos[i] + " - $" + precios[i]);
                         }
                         System.out.print("Curso a modificar: ");
                         int c = sc.nextInt();
@@ -147,7 +150,7 @@ public class Main {
                             System.out.print("¿Desea comprar el curso? (s/n): ");
                             r = sc.nextLine();
                             if (r.equalsIgnoreCase("s")) {
-                                System.out.println("Compra realizada.");
+                                System.out.println("Compra realizada con éxito.");
                             }
                         } else {
                             System.out.println("Debe seleccionar un curso.");
@@ -157,6 +160,7 @@ public class Main {
 
                 case 3:
                     if (admin) {
+                        System.out.println("\n--- ELIMINAR USUARIO ---");
                         for (int i = 0; i < totalUsuarios; i++) {
                             System.out.println((i + 1) + ") " + nombres[i]);
                         }
@@ -174,6 +178,7 @@ public class Main {
                             System.out.println("Usuario eliminado.");
                         }
                     } else {
+                        System.out.println("\n--- MI PERFIL ---");
                         System.out.println("Nombre: " + nombres[usuarioActual]);
                         System.out.println("Correo: " + correos[usuarioActual]);
                         System.out.println("Curso: " + cursosUsuario[usuarioActual]);
@@ -190,14 +195,20 @@ public class Main {
                         totalCursos++;
                         System.out.println("Curso agregado.");
                     } else {
-                        sesion = false;
-                        usuarioActual = -1;
-                        System.out.println("Sesión cerrada.");
+                        System.out.println("\n--- ACTUALIZAR MIS DATOS ---");
+                        System.out.print("Nuevo nombre: ");
+                        nombres[usuarioActual] = sc.nextLine();
+                        System.out.print("Nuevo correo: ");
+                        correos[usuarioActual] = sc.nextLine();
+                        System.out.print("Nueva contraseña: ");
+                        claves[usuarioActual] = sc.nextLine();
+                        System.out.println("Datos actualizados correctamente.");
                     }
                     break;
 
                 case 5:
                     if (admin) {
+                        System.out.println("\n--- ELIMINAR CURSO ---");
                         for (int i = 0; i < totalCursos; i++) {
                             System.out.println((i + 1) + ") " + cursos[i]);
                         }
@@ -212,31 +223,14 @@ public class Main {
                             totalCursos--;
                             System.out.println("Curso eliminado.");
                         }
+                    } else {
+                        sesion = false;
+                        usuarioActual = -1;
+                        System.out.println("Sesión cerrada.");
                     }
                     break;
 
                 case 6:
-                    if (admin) {
-                        for (int i = 0; i < totalUsuarios; i++) {
-                            System.out.println((i + 1) + ") " + nombres[i]);
-                        }
-                        System.out.print("Usuario a actualizar: ");
-                        int u = sc.nextInt();
-                        sc.nextLine();
-
-                        if (u > 0 && u <= totalUsuarios) {
-                            System.out.print("Nuevo nombre: ");
-                            nombres[u - 1] = sc.nextLine();
-                            System.out.print("Nuevo correo: ");
-                            correos[u - 1] = sc.nextLine();
-                            System.out.print("Nueva contraseña: ");
-                            claves[u - 1] = sc.nextLine();
-                            System.out.println("Usuario actualizado.");
-                        }
-                    }
-                    break;
-
-                case 7:
                     if (admin) {
                         sesion = false;
                         admin = false;
@@ -256,6 +250,7 @@ public class Main {
         sc.close();
     }
 }
+
 
 
 
