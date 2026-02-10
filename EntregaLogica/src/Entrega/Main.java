@@ -39,28 +39,37 @@ public class Main {
         precios[2] = 149990;
 
         do {
-            System.out.println("\n=== PLATAFORMA DE CURSOS ===");
+            System.out.println("\n==============================");
+            System.out.println("     PLATAFORMA DE CURSOS     ");
+            System.out.println("==============================");
 
             if (!sesion) {
-                System.out.println("1. Registrarse");
-                System.out.println("2. Iniciar sesión");
-                System.out.println("0. Salir");
+                System.out.println(" 1) Registrarse");
+                System.out.println(" 2) Iniciar sesión");
+                System.out.println(" 0) Salir");
             } else if (admin) {
-                System.out.println("1. Ver usuarios");
-                System.out.println("2. Cambiar precios");
-                System.out.println("3. Eliminar usuario");
-                System.out.println("4. Agregar curso");
-                System.out.println("5. Eliminar curso");
-                System.out.println("6. Cerrar sesión");
-                System.out.println("0. Salir");
+                System.out.println(" 1) Ver usuarios");
+                System.out.println(" 2) Cambiar precios");
+                System.out.println(" 3) Eliminar usuario");
+                System.out.println(" 4) Agregar curso");
+                System.out.println(" 5) Eliminar curso");
+                System.out.println(" 6) Cerrar sesión");
+                System.out.println(" 0) Salir");
             } else {
-                System.out.println("1. Ver cursos");
-                System.out.println("2. Comprar curso");
-                System.out.println("3. Ver perfil");
-                System.out.println("4. Cerrar sesión");
-                System.out.println("0. Salir");
+                System.out.println(" 1) Ver cursos");
+                System.out.println(" 2) Comprar curso");
+                System.out.println(" 3) Ver perfil");
+                System.out.println(" 4) Cerrar sesión");
+                System.out.println(" 0) Salir");
             }
 
+            System.out.println("------------------------------");
+            System.out.print("Seleccione una opción: ");
+
+            while (!sc.hasNextInt()) {
+                System.out.print("Ingrese una opción válida: ");
+                sc.next();
+            }
             opcion = sc.nextInt();
             sc.nextLine();
 
@@ -78,12 +87,16 @@ public class Main {
                         totalUsuarios++;
                         System.out.println("Registro exitoso.");
                     } else if (admin) {
+                        System.out.println("\n--- USUARIOS REGISTRADOS ---");
                         for (int i = 0; i < totalUsuarios; i++) {
-                            System.out.println((i + 1) + ". " + nombres[i] + " | " + correos[i] + " | " + cursosUsuario[i]);
+                            System.out.println(" " + (i + 1) + ") " + nombres[i] +
+                                    " | " + correos[i] +
+                                    " | " + cursosUsuario[i]);
                         }
                     } else {
+                        System.out.println("\n--- CURSOS DISPONIBLES ---");
                         for (int i = 0; i < totalCursos; i++) {
-                            System.out.println((i + 1) + ". " + cursos[i] + " $" + precios[i]);
+                            System.out.println(" " + (i + 1) + ") " + cursos[i] + " - $" + precios[i]);
                         }
                         System.out.print("Seleccione un curso: ");
                         int c = sc.nextInt();
@@ -123,10 +136,10 @@ public class Main {
                             }
                         }
                     } else if (admin) {
+                        System.out.println("\n--- MODIFICAR PRECIOS ---");
                         for (int i = 0; i < totalCursos; i++) {
-                            System.out.println((i + 1) + ". " + cursos[i] + " $" + precios[i]);
+                            System.out.println(" " + (i + 1) + ") " + cursos[i] + " - $" + precios[i]);
                         }
-
                         System.out.print("Curso a modificar: ");
                         int c = sc.nextInt();
                         sc.nextLine();
@@ -152,10 +165,10 @@ public class Main {
 
                 case 3:
                     if (admin) {
+                        System.out.println("\n--- ELIMINAR USUARIO ---");
                         for (int i = 0; i < totalUsuarios; i++) {
-                            System.out.println((i + 1) + ". " + nombres[i]);
+                            System.out.println(" " + (i + 1) + ") " + nombres[i]);
                         }
-
                         System.out.print("Usuario a eliminar: ");
                         int u = sc.nextInt();
                         sc.nextLine();
@@ -171,6 +184,7 @@ public class Main {
                             System.out.println("Usuario eliminado.");
                         }
                     } else {
+                        System.out.println("\n--- PERFIL ---");
                         System.out.println("Nombre: " + nombres[usuarioActual]);
                         System.out.println("Correo: " + correos[usuarioActual]);
                         System.out.println("Curso: " + cursosUsuario[usuarioActual]);
@@ -195,10 +209,10 @@ public class Main {
 
                 case 5:
                     if (admin) {
+                        System.out.println("\n--- ELIMINAR CURSO ---");
                         for (int i = 0; i < totalCursos; i++) {
-                            System.out.println((i + 1) + ". " + cursos[i]);
+                            System.out.println(" " + (i + 1) + ") " + cursos[i]);
                         }
-
                         System.out.print("Curso a eliminar: ");
                         int c = sc.nextInt();
                         sc.nextLine();
@@ -234,5 +248,6 @@ public class Main {
         sc.close();
     }
 }
+
 
 
