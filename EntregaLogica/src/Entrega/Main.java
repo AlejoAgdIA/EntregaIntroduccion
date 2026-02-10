@@ -53,7 +53,8 @@ public class Main {
                 System.out.println(" 3) Eliminar usuario");
                 System.out.println(" 4) Agregar curso");
                 System.out.println(" 5) Eliminar curso");
-                System.out.println(" 6) Cerrar sesión");
+                System.out.println(" 6) Actualizar usuario");
+                System.out.println(" 7) Cerrar sesión");
                 System.out.println(" 0) Salir");
             } else {
                 System.out.println(" 1) Ver cursos");
@@ -63,9 +64,7 @@ public class Main {
                 System.out.println(" 0) Salir");
             }
 
-            System.out.println("------------------------------");
             System.out.print("Seleccione una opción: ");
-
             while (!sc.hasNextInt()) {
                 System.out.print("Ingrese una opción válida: ");
                 sc.next();
@@ -87,21 +86,16 @@ public class Main {
                         totalUsuarios++;
                         System.out.println("Registro exitoso.");
                     } else if (admin) {
-                        System.out.println("\n--- USUARIOS REGISTRADOS ---");
                         for (int i = 0; i < totalUsuarios; i++) {
-                            System.out.println(" " + (i + 1) + ") " + nombres[i] +
-                                    " | " + correos[i] +
-                                    " | " + cursosUsuario[i]);
+                            System.out.println((i + 1) + ") " + nombres[i] + " | " + correos[i]);
                         }
                     } else {
-                        System.out.println("\n--- CURSOS DISPONIBLES ---");
                         for (int i = 0; i < totalCursos; i++) {
-                            System.out.println(" " + (i + 1) + ") " + cursos[i] + " - $" + precios[i]);
+                            System.out.println((i + 1) + ") " + cursos[i] + " - $" + precios[i]);
                         }
                         System.out.print("Seleccione un curso: ");
                         int c = sc.nextInt();
                         sc.nextLine();
-
                         if (c > 0 && c <= totalCursos) {
                             cursosUsuario[usuarioActual] = cursos[c - 1];
                             System.out.println("Curso seleccionado.");
@@ -136,14 +130,12 @@ public class Main {
                             }
                         }
                     } else if (admin) {
-                        System.out.println("\n--- MODIFICAR PRECIOS ---");
                         for (int i = 0; i < totalCursos; i++) {
-                            System.out.println(" " + (i + 1) + ") " + cursos[i] + " - $" + precios[i]);
+                            System.out.println((i + 1) + ") " + cursos[i] + " $" + precios[i]);
                         }
                         System.out.print("Curso a modificar: ");
                         int c = sc.nextInt();
                         sc.nextLine();
-
                         if (c > 0 && c <= totalCursos) {
                             System.out.print("Nuevo precio: ");
                             precios[c - 1] = sc.nextDouble();
@@ -155,7 +147,7 @@ public class Main {
                             System.out.print("¿Desea comprar el curso? (s/n): ");
                             r = sc.nextLine();
                             if (r.equalsIgnoreCase("s")) {
-                                System.out.println("Compra realizada con éxito.");
+                                System.out.println("Compra realizada.");
                             }
                         } else {
                             System.out.println("Debe seleccionar un curso.");
@@ -165,14 +157,12 @@ public class Main {
 
                 case 3:
                     if (admin) {
-                        System.out.println("\n--- ELIMINAR USUARIO ---");
                         for (int i = 0; i < totalUsuarios; i++) {
-                            System.out.println(" " + (i + 1) + ") " + nombres[i]);
+                            System.out.println((i + 1) + ") " + nombres[i]);
                         }
                         System.out.print("Usuario a eliminar: ");
                         int u = sc.nextInt();
                         sc.nextLine();
-
                         if (u > 0 && u <= totalUsuarios) {
                             for (int i = u - 1; i < totalUsuarios - 1; i++) {
                                 nombres[i] = nombres[i + 1];
@@ -184,7 +174,6 @@ public class Main {
                             System.out.println("Usuario eliminado.");
                         }
                     } else {
-                        System.out.println("\n--- PERFIL ---");
                         System.out.println("Nombre: " + nombres[usuarioActual]);
                         System.out.println("Correo: " + correos[usuarioActual]);
                         System.out.println("Curso: " + cursosUsuario[usuarioActual]);
@@ -209,14 +198,12 @@ public class Main {
 
                 case 5:
                     if (admin) {
-                        System.out.println("\n--- ELIMINAR CURSO ---");
                         for (int i = 0; i < totalCursos; i++) {
-                            System.out.println(" " + (i + 1) + ") " + cursos[i]);
+                            System.out.println((i + 1) + ") " + cursos[i]);
                         }
                         System.out.print("Curso a eliminar: ");
                         int c = sc.nextInt();
                         sc.nextLine();
-
                         if (c > 0 && c <= totalCursos) {
                             for (int i = c - 1; i < totalCursos - 1; i++) {
                                 cursos[i] = cursos[i + 1];
@@ -229,6 +216,27 @@ public class Main {
                     break;
 
                 case 6:
+                    if (admin) {
+                        for (int i = 0; i < totalUsuarios; i++) {
+                            System.out.println((i + 1) + ") " + nombres[i]);
+                        }
+                        System.out.print("Usuario a actualizar: ");
+                        int u = sc.nextInt();
+                        sc.nextLine();
+
+                        if (u > 0 && u <= totalUsuarios) {
+                            System.out.print("Nuevo nombre: ");
+                            nombres[u - 1] = sc.nextLine();
+                            System.out.print("Nuevo correo: ");
+                            correos[u - 1] = sc.nextLine();
+                            System.out.print("Nueva contraseña: ");
+                            claves[u - 1] = sc.nextLine();
+                            System.out.println("Usuario actualizado.");
+                        }
+                    }
+                    break;
+
+                case 7:
                     if (admin) {
                         sesion = false;
                         admin = false;
@@ -248,6 +256,7 @@ public class Main {
         sc.close();
     }
 }
+
 
 
 
